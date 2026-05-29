@@ -4,13 +4,12 @@ from pyswip import Prolog
 
 app = Flask(__name__)
 
-LASTFM_API_KEY = "66fb98de4915671549efaf41c040c508" # Pon tu llave real aquí
+LASTFM_API_KEY = "66fb98de4915671549efaf41c040c508"
 
 prolog = Prolog()
 prolog.consult("reglas.pl")
 
 def consultar_prolog(vibra_limpia):
-    # ¡Agregamos comillas simples alrededor de la variable para protegerla!
     query_str = f"obtener_genero('{vibra_limpia}', Genero)"
     try:
         resultados = list(prolog.query(query_str))
